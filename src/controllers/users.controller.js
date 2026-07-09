@@ -1,10 +1,11 @@
+import pool from "../db/config.js";
+
 class Users {
     constructor() {}
-        createUser ( req , res )  {
+        async createUser ( req , res )  {
             return res.json('ok')
         }
 }
 
 const user = new Users();
-
 export default user;

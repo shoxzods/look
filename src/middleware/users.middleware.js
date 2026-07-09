@@ -3,7 +3,7 @@ import { BadRequest } from "../utils/errors.js";
 
 class Users {
     constructor() {}
-
+    
     checkUser( req , res , next ) {
         const valid = schema.validate(req.body);
         if( valid.error)
