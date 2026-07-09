@@ -9,10 +9,15 @@ app.use(express.json());
 app.use(mainRouter);
 
 app.use((error , req , res , next ) => {
-    if ( error.status != 500 ) {
+    if ( error.status ) {
         return res.status(error.status).json({
             success:false,
             message: error.message
+        })
+    } else {
+        return res.status(500).json({
+            success:false,
+            message:"Internal Server Error"
         })
     }
 });
