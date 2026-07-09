@@ -1,8 +1,10 @@
 class Users {
     constructor() {}
         createUser ( req , res )  {
-            console.log(req)
+            return res.json('ok')
         }
 }
 
-export default Users;
+const user = new Users();
+
+export default user;
