@@ -18,6 +18,10 @@ class Users {
             message:"user created successfully"
         }
     }
+
+    static async getAllUsers() {
+        return (await pool.query('select * from users')).rows;
+    }
 }
 
 export default Users;

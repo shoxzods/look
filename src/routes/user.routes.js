@@ -4,6 +4,7 @@ import userMiddleware from "../middleware/users.middleware.js";
 
 const route = Router();
 
-route.post('/create' , userMiddleware.checkUser , userController.createUser);
+route.post('/create' , userMiddleware.checkUser , userController.createUser)
+     .get('/all' , userController.getAllUsers);
 
 export default route;

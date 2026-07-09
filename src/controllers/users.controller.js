@@ -10,6 +10,14 @@ class Users {
             return next(err)
           }
         }
+
+        async getAllUsers( req , res , next ) {
+          const data = await userService.getAllUsers();
+          res.status(200).json({
+             status:"ok",
+             data: data
+          });
+        }
 }
 
 const user = new Users();
