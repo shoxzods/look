@@ -1,8 +1,17 @@
+import { BadRequest } from "../utils/errors.js";
+import { orderSchema } from "../utils/validation.js";
+
 class Orders {
     constructor() {}
 
     checkOrders( req , res , next) {
-        console.log(req.params)
+        const check = orderSchema.validate(req.body);
+
+        if ( check.error ) {
+            next(new BadRequest(400 , check.error.message))
+        }
+
+        next()
     }
 }
 
