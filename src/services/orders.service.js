@@ -14,10 +14,8 @@ class Orders {
             message:"order created successfully"
         }
     } catch(err) {
-        if ( err.code == "23503" )
-            throw new NotFound( 404 , "user_id or product_id not found" )
+        throw new NotFound( 404 , "user_id or product_id not found" );
     }
-
     }
 
 }
