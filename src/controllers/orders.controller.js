@@ -1,6 +1,5 @@
+import pool from "../db/config.js";
 import ordersService from "../services/orders.service.js";
-import { NotFound } from "../utils/errors.js";
-
 
 class Orders {
     constructor() {}
@@ -14,10 +13,13 @@ class Orders {
         }
     }
 
-    getUserOrder( req , res , next ) {
+    async getUserOrder( req , res , next ) {
+
+       const data = await ordersService.userOrders(req.params);
+
         return res.status(200).json({
             success:true,
-            message:"ok"
+            message:data
         })
     }
 }

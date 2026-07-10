@@ -5,6 +5,6 @@ import ordersMiddleware from "../middleware/orders.middleware.js";
 const router = Router();
 
 router.post('/order' , ordersMiddleware.checkOrders , ordersController.addOrders)
-    //   .get('/order');
+      .get('/order/user/:id' , ordersMiddleware.checkUserId , ordersController.getUserOrder);
 
 export default router;

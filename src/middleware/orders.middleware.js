@@ -15,6 +15,16 @@ class Orders {
 
         next()
     }
+
+    checkUserId( req , res , next ) {
+        if ( isNaN(+req.params.id ) ) {
+            return next(new BadRequest(400 , 'id must be a number'))
+        } else if ( Math.floor(+req.params.id) != +req.params.id ) {
+           return next(new BadRequest(400 , 'id must be an integer'))
+        }
+
+        return next()
+    }
 }
 
 const orders = new Orders();
