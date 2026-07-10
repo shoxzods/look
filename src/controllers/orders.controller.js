@@ -13,7 +13,7 @@ class Orders {
         }
     }
 
-    async getUserOrder( req , res , next ) {
+    async getUserOrder( req , res) {
 
        const data = await ordersService.userOrders(req.params);
 
