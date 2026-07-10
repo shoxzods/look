@@ -1,8 +1,16 @@
+import ordersService from "../services/orders.service.js";
+
+
 class Orders {
     constructor() {}
 
-    addOrders() {
-
+    async addOrders( req , res, next ) {
+      try {
+        const message = await ordersService.orders(req.body);
+        return res.status(200).json(message);
+      } catch(err) {
+        return next( err )
+      }
     }
 }
 

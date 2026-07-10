@@ -16,4 +16,13 @@ class Conflict extends Error {
     }
 }
 
-export { BadRequest , Conflict }; 
+class NotFound extends Error {
+    constructor( status , message ) {
+        super()
+        this.name = "Conflict"
+        this.status = status
+        this.message = message
+    }
+}
+
+export { BadRequest , Conflict , NotFound }; 
