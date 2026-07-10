@@ -8,3 +8,11 @@ export default joi.object({
             "any.required": "Phone number is required"
         })
 });
+
+const orderSchema = joi.object({
+    user_id: joi.number().required(),
+    product_id: joi.number().required(),
+    count: joi.number().required()
+});
+
+export { orderSchema };
