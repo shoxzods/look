@@ -22,6 +22,13 @@ app.use((error , req , res , next ) => {
             message:"Internal Server Error"
         })
     }
-});
+})
+.all(/.*/ , ( req , res ) => {
+    console.log(req.url)
+    return res.status(404).json({
+        status:false,
+        message:`${req.url}'s ${req.method} method was not found`
+    })
+})
 
 app.listen(port , () => console.log('server is running'));

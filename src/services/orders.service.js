@@ -24,7 +24,7 @@ class Orders {
     
     const data = await pool.query(
     `SELECT
-        o.user_id,
+        o.id,
         o.product_id,
         p.product_name,
         p.product_img,
@@ -34,8 +34,8 @@ class Orders {
         ON p.id = o.product_id
     WHERE o.user_id = $1
     GROUP BY
-        o.user_id,
         o.product_id,
+        o.id,
         p.product_name,
         p.product_img` , [params.id]);
 
@@ -43,7 +43,13 @@ class Orders {
         throw new NotFound(404 , 'order not found')
     }
 
-    return data.rows
+    const user_data = await pool.query('select id , user_name from users where id = $1' , [params.id]);
+
+    return {
+        user_id:user_data.rows[0].id,
+        user_name:user_data.rows[0].user_name,
+        orders: data.rows
+    }
   }
 }
 
