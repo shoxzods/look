@@ -22,8 +22,9 @@ app.use((error , req , res , next ) => {
             message:"Internal Server Error"
         })
     }
-})
-.all(/.*/ , ( req , res ) => {
+});
+
+app.all(/.*/ , ( req , res ) => {
     console.log(req.url)
     return res.status(404).json({
         status:false,

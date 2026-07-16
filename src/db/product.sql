@@ -1,1 +1,6 @@
-select sum(count) , user_id , product_name , product_img from (select user_id , product_name , product_img , count  from orders left join users on users.id = orders.user_id left join products on orders.product_id = products.id where user_id = 11) group by user_id , product_id , product_name , product_img , user_id;
+INSERT INTO users (json , user_name , phone)
+VALUES (
+    '{"name":"Иван","age":30,"skills":["SQL","Go"]}'::jsonb,
+    'dfdfd',
+    '3943049343'
+);

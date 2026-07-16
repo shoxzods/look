@@ -24,7 +24,6 @@ class Orders {
     
     const data = await pool.query(
     `SELECT
-        o.id,
         o.product_id,
         p.product_name,
         p.product_img,
@@ -35,7 +34,6 @@ class Orders {
     WHERE o.user_id = $1
     GROUP BY
         o.product_id,
-        o.id,
         p.product_name,
         p.product_img` , [params.id]);
 
